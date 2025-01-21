@@ -1,0 +1,40 @@
+/* Subtle Modern Styling with Color Palette */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 4px rgba(114, 125, 115, 0.1);
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead {
+    background-color: #727D73;
+    color: #FFFFFF;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border: 1px solid #D0DDD0;
+}
+
+.table tr:nth-child(even) {
+    background-color: #F5F5F5;
+}
+
+.btn {
+    background-color: #727D73;
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 16px;
+    margin: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(114, 125, 115, 0.2);
+}

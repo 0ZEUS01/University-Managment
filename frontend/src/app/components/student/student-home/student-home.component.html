@@ -1,0 +1,127 @@
+<div class="home-container">
+  <div class="sidebar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="App Logo">
+    </div>
+    <nav>
+      <ul>
+        <li [routerLinkActive]="'active'">
+          <a [routerLink]="['/student/dashboard']">
+            <i class="material-icons">dashboard</i> Dashboard
+          </a>
+        </li>
+        <li [routerLinkActive]="'active'">
+          <a [routerLink]="['/student/courses']">
+            <i class="material-icons">book</i> My Courses
+          </a>
+        </li>
+        <li [routerLinkActive]="'active'">
+          <a [routerLink]="['/student/grades']">
+            <i class="material-icons">grade</i> Grades
+          </a>
+        </li>
+        <li [routerLinkActive]="'active'">
+          <a [routerLink]="['/student/profile']">
+            <i class="material-icons">person</i> Profile
+          </a>
+        </li>
+        <li (click)="logout()">
+          <a><i class="material-icons">exit_to_app</i> Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <div class="header-title">
+        <h1>Student Dashboard</h1>
+        <p>Welcome, {{ username }}!</p>
+      </div>
+      <div class="header-actions">
+        <button mat-raised-button color="primary" [routerLink]="['/student/courses/enroll']">
+          <i class="material-icons">add</i> Enroll Course
+        </button>
+      </div>
+    </header>
+
+    <div class="content-sections">
+      <!-- My Courses Section -->
+      <section id="courses" class="section">
+        <div class="section-header">
+          <h2>My Courses</h2>
+          <a [routerLink]="['/student/courses']" class="view-all">View All</a>
+        </div>
+        <div class="course-grid">
+          <mat-card *ngFor="let course of courses" class="course-card" [routerLink]="['/student/courses', course.code]">
+            <mat-card-header>
+              <mat-card-title>{{ course.name }}</mat-card-title>
+              <mat-card-subtitle>{{ course.code }} | {{ course.semester }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p class="course-description">{{ course.description }}</p>
+              <div class="course-details">
+                <div class="course-info">
+                  <span class="instructor">
+                    <i class="material-icons">person</i> {{ course.instructor }}
+                  </span>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+          
+          <mat-card class="view-more-card" [routerLink]="['/student/courses']">
+            <mat-card-content class="view-more-content">
+              <i class="material-icons">more_horiz</i>
+              <span>View More Courses</span>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </section>
+
+      <!-- Grades Section -->
+      <section id="grades" class="section">
+        <div class="grades-section">
+          <div class="section-header">
+            <h2>Recent Grades</h2>
+            <a [routerLink]="['/student/grades']" class="view-all">
+              View All ({{ totalGradesCount }} Total)
+            </a>
+          </div>
+          <mat-card class="grades-table-card">
+            <mat-table [dataSource]="gradesDataSource" class="grades-table">
+              <ng-container matColumnDef="course">
+                <mat-header-cell *matHeaderCellDef>Course</mat-header-cell>
+                <mat-cell *matCellDef="let grade">{{ grade.courseName }}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="exam">
+                <mat-header-cell *matHeaderCellDef>Exam</mat-header-cell>
+                <mat-cell *matCellDef="let grade">{{ grade.examName }}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="grade">
+                <mat-header-cell *matHeaderCellDef>Grade</mat-header-cell>
+                <mat-cell *matCellDef="let grade">
+                  <span class="grade-badge" [ngClass]="getGradeBadgeClass(grade.score)">
+                    {{ grade.score }}/{{ grade.maxScore }}
+                  </span>
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="performance">
+                <mat-header-cell *matHeaderCellDef>Performance</mat-header-cell>
+                <mat-cell *matCellDef="let grade">
+                  {{ calculatePerformance(grade.score, grade.maxScore) }}
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="gradeColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: gradeColumns;"></mat-row>
+            </mat-table>
+          </mat-card>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

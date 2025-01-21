@@ -1,0 +1,50 @@
+<div class="signin-container">
+  <mat-card class="signin-card">
+    <div class="logo-container">
+      <img src="assets/logo.png" alt="App Logo" class="app-logo">
+    </div>
+    
+    <mat-card-header>
+      <mat-card-title class="signin-title">Welcome Back</mat-card-title>
+      <mat-card-subtitle class="signin-subtitle">Sign in to continue</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <form [formGroup]="signinForm" (ngSubmit)="onSubmit()" class="signin-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Enter your username" formControlName="username" required>
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-error *ngIf="signinForm.get('username')?.invalid">
+            Username is required (min 3 characters)
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Enter your password" formControlName="password" required>
+          <mat-icon matPrefix>lock</mat-icon>
+          <mat-error *ngIf="signinForm.get('password')?.invalid">
+            Password is required (min 6 characters)
+          </mat-error>
+        </mat-form-field>
+
+        <div *ngIf="error" class="error-message">
+          {{ error }}
+        </div>
+
+        <button mat-raised-button color="primary" type="submit" 
+                [disabled]="signinForm.invalid || loading"
+                class="signin-button">
+          {{ loading ? 'Signing In...' : 'Sign In' }}
+        </button>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions class="signup-link">
+      <p>Don't have an account? 
+        <a (click)="navigateToSignup()" class="signup-text">Sign Up</a>
+      </p>
+    </mat-card-actions>
+  </mat-card>
+</div>

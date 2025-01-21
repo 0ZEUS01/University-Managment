@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Enroll in a New Course</h2>
+<mat-dialog-content>
+  <form [formGroup]="enrollForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Select Course</mat-label>
+      <mat-select formControlName="selectedCourse">
+        <mat-option *ngFor="let course of availableCourses" [value]="course">
+          <div class="course-option">
+            <span class="course-code">{{ course.code }}</span>
+            <span class="course-name">{{ course.name }}</span>
+            <span class="course-instructor">{{ course.instructor }}</span>
+          </div>
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="enrollForm.get('selectedCourse').hasError('required')">
+        Please select a course
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" 
+          [disabled]="!enrollForm.valid">Enroll</button>
+</mat-dialog-actions>

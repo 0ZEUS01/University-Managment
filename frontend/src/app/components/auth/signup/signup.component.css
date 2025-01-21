@@ -1,0 +1,74 @@
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.signup-card {
+  width: 450px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.app-logo {
+  max-width: 150px;
+  height: auto;
+}
+
+.signup-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.signup-subtitle {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form mat-form-field {
+  margin-bottom: 15px;
+}
+
+.error-message {
+  color: #f44336;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.signup-button {
+  margin-top: 15px;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.signin-link {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.signin-text {
+  color: #3f51b5;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.signin-text:hover {
+  text-decoration: underline;
+}

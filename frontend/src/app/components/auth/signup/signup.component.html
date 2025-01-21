@@ -1,0 +1,69 @@
+<div class="signup-container">
+  <mat-card class="signup-card">
+    <div class="logo-container">
+      <img src="assets/logo.png" alt="App Logo" class="app-logo">
+    </div>
+    
+    <mat-card-header>
+      <mat-card-title class="signup-title">Create Account</mat-card-title>
+      <mat-card-subtitle class="signup-subtitle">Sign up to get started</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Choose a username" formControlName="username" required>
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-error *ngIf="signupForm.get('username')?.invalid">
+            Username is required (min 3 characters)
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Enter your email" formControlName="email" required>
+          <mat-icon matPrefix>email</mat-icon>
+          <mat-error *ngIf="signupForm.get('email')?.invalid">
+            Please enter a valid email
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Create a password" formControlName="password" required>
+          <mat-icon matPrefix>lock</mat-icon>
+          <mat-error *ngIf="signupForm.get('password')?.invalid">
+            Password is required (min 6 characters)
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="role" required>
+            <mat-option *ngFor="let role of roles" [value]="role">
+              {{ role }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matPrefix>assignment_ind</mat-icon>
+        </mat-form-field>
+
+        <div *ngIf="error" class="error-message">
+          {{ error }}
+        </div>
+
+        <button mat-raised-button color="primary" type="submit" 
+                [disabled]="signupForm.invalid || loading"
+                class="signup-button">
+          {{ loading ? 'Signing Up...' : 'Sign Up' }}
+        </button>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions class="signin-link">
+      <p>Already have an account? 
+        <a (click)="navigateToSignin()" class="signin-text">Sign In</a>
+      </p>
+    </mat-card-actions>
+  </mat-card>
+</div>

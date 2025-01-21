@@ -1,0 +1,111 @@
+<div class="student-layout">
+  <div class="sidebar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="App Logo">
+    </div>
+    <nav>
+      <ul>
+        <li [routerLinkActive]="'active'">
+          <a [routerLink]="['/student/dashboard']">
+            <i class="material-icons">dashboard</i> Dashboard
+          </a>
+        </li>
+        <li [routerLinkActive]="'active'">
+          <a [routerLink]="['/student/courses']">
+            <i class="material-icons">book</i> My Courses
+          </a>
+        </li>
+        <li [routerLinkActive]="'active'">
+          <a [routerLink]="['/student/grades']">
+            <i class="material-icons">grade</i> Grades
+          </a>
+        </li>
+        <li [routerLinkActive]="'active'">
+          <a [routerLink]="['/student/profile']">
+            <i class="material-icons">person</i> Profile
+          </a>
+        </li>
+        <li (click)="logout()">
+          <a><i class="material-icons">exit_to_app</i> Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <div class="grades-header">
+        <h1>Academic Performance</h1>
+        <button mat-raised-button color="primary" [routerLink]="['/student/courses/enroll']" class="enroll-button">
+          <i class="material-icons">add</i> Enroll New Course
+        </button>
+      </div>
+    </header>
+
+    <div class="grades-content">
+      <!-- Performance Summary Card -->
+      <mat-card class="performance-summary">
+        <mat-card-header>
+          <mat-card-title>Overall Performance</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="summary-stats">
+            <div class="stat-item">
+              <span class="stat-label">Total Courses</span>
+              <span class="stat-value">5</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Average Grade</span>
+              <span class="stat-value">14.4/20</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Grades Table -->
+      <mat-card class="grades-table-card">
+        <mat-card-header>
+          <mat-card-title>Detailed Grades</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-table [dataSource]="gradesDataSource" class="grades-table">
+            <!-- Course Column -->
+            <ng-container matColumnDef="course">
+              <mat-header-cell *matHeaderCellDef>Course</mat-header-cell>
+              <mat-cell *matCellDef="let grade">{{ grade.courseName }}</mat-cell>
+            </ng-container>
+
+            <!-- Exam Column -->
+            <ng-container matColumnDef="exam">
+              <mat-header-cell *matHeaderCellDef>Exam</mat-header-cell>
+              <mat-cell *matCellDef="let grade">{{ grade.examName }}</mat-cell>
+            </ng-container>
+
+            <!-- Grade Column -->
+            <ng-container matColumnDef="grade">
+              <mat-header-cell *matHeaderCellDef>Grade</mat-header-cell>
+              <mat-cell *matCellDef="let grade">
+                <span class="grade-badge" [ngClass]="getGradeBadgeClass(grade.score)">
+                  {{ grade.score }}/{{ grade.maxScore }}
+                </span>
+              </mat-cell>
+            </ng-container>
+
+            <!-- Performance Column -->
+            <ng-container matColumnDef="performance">
+              <mat-header-cell *matHeaderCellDef>Performance</mat-header-cell>
+              <mat-cell *matCellDef="let grade">
+                <span class="performance-indicator">
+                  {{ calculatePerformance(grade.score, grade.maxScore) }}
+                </span>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

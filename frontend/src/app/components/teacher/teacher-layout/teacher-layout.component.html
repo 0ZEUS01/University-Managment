@@ -1,0 +1,30 @@
+<div class="home-container">
+  <div class="sidebar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="App Logo">
+    </div>
+    <nav>
+      <ul>
+        <li [class.active]="router.url === '/teacher/home'">
+          <a routerLink="/teacher/home"><i class="material-icons">dashboard</i> Dashboard</a>
+        </li>
+        <li [class.active]="router.url === '/teacher/courses'">
+          <a routerLink="/teacher/courses"><i class="material-icons">book</i> My Courses</a>
+        </li>
+        <li [class.active]="router.url === '/teacher/exams'">
+          <a routerLink="/teacher/exams"><i class="material-icons">assignment</i> Exams</a>
+        </li>
+        <li [class.active]="router.url === '/teacher/profile'">
+          <a routerLink="/teacher/profile"><i class="material-icons">person</i> Profile</a>
+        </li>
+        <li (click)="logout()">
+          <a><i class="material-icons">exit_to_app</i> Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

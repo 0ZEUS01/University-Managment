@@ -1,0 +1,163 @@
+.courses-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+  background-color: #f4f6f9;
+  min-height: 100vh;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.courses-card {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.courses-card:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.courses-table {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.mat-table {
+  height: 100%;
+}
+
+.mat-column-code {
+  flex: 1 1 100px;
+  justify-content: flex-start;
+}
+
+.mat-column-name {
+  flex: 3 1 250px;
+  justify-content: flex-start;
+}
+
+.mat-column-specialty {
+  flex: 2 1 200px;
+  justify-content: flex-start;
+}
+
+.mat-column-semester {
+  flex: 1 1 120px;
+  justify-content: center;
+}
+
+.mat-column-students {
+  flex: 1 1 100px;
+  justify-content: center;
+}
+
+.mat-column-actions {
+  flex: 1 1 100px;
+  justify-content: center;
+}
+
+.semester-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: white;
+  display: inline-block;
+  text-align: center;
+}
+
+.semester-badge-1st {
+  background-color: #3498db; /* Blue for 1st semester */
+}
+
+.semester-badge-2nd {
+  background-color: #2ecc71; /* Green for 2nd semester */
+}
+
+mat-header-cell, mat-cell {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+mat-header-cell {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+mat-cell {
+  color: #34495e;
+}
+
+.mat-icon-button {
+  margin: 0 5px;
+}
+
+.student-count {
+  display: flex;
+  align-items: center;
+  color: #7f8c8d;
+}
+
+.student-count mat-icon {
+  margin-right: 5px;
+  color: #3f51b5;
+  font-size: 18px;
+}
+
+.add-button {
+  margin-left: auto;
+  color: white;
+}
+
+.add-button mat-icon {
+  color: white;
+}
+
+/* Ensure full height layout */
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-card {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-table-container {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-header button {
+    margin-top: 10px;
+    width: 100%;
+  }
+}

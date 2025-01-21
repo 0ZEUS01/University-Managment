@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="course-service" />
+        <module name="eureka-service" />
+        <module name="common-student" />
+        <module name="common-service" />
+        <module name="examen-service" />
+        <module name="api-gateway-service" />
+        <module name="answer-service" />
+        <module name="user-service" />
+        <module name="zuul-service" />
+        <module name="common-exam" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="answer-service" options="-parameters" />
+      <module name="api-gateway-service" options="-parameters" />
+      <module name="common-exam" options="-parameters" />
+      <module name="common-service" options="-parameters" />
+      <module name="common-student" options="-parameters" />
+      <module name="course-service" options="-parameters" />
+      <module name="eureka-service" options="-parameters" />
+      <module name="examen-service" options="-parameters" />
+      <module name="user-service" options="-parameters" />
+      <module name="zuul-service" options="-parameters" />
+    </option>
+  </component>
+</project>

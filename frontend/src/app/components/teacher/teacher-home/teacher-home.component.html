@@ -1,0 +1,77 @@
+<div class="dashboard-content">
+  <header>
+    <div class="header-title">
+      <h1>Welcome Back, {{ fullName || username }}!</h1>
+      <p>Here's an overview of your teaching activities</p>
+    </div>
+    <div class="header-actions">
+      <button mat-raised-button color="primary" routerLink="/teacher/courses">
+        <mat-icon>library_books</mat-icon>
+        My Courses
+      </button>
+      <button mat-raised-button color="accent" routerLink="/teacher/exams">
+        <mat-icon>assignment</mat-icon>
+        My Exams
+      </button>
+    </div>
+  </header>
+
+  <div class="stats-cards">
+    <mat-card class="stat-card courses">
+      <mat-icon>school</mat-icon>
+      <div class="stat-content">
+        <span class="stat-value">{{ totalCoursesCount }}</span>
+        <span class="stat-label">Active Courses</span>
+      </div>
+    </mat-card>
+
+    <mat-card class="stat-card students">
+      <mat-icon>people</mat-icon>
+      <div class="stat-content">
+        <span class="stat-value">{{ totalStudents }}</span>
+        <span class="stat-label">Total Students</span>
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="content-sections">
+    <!-- Recent Courses Section -->
+    <section class="section courses-section">
+      <div class="section-header">
+        <h2>Recent Courses</h2>
+        <button mat-button color="primary" routerLink="/teacher/courses">
+          View All ({{ totalCoursesCount }}) <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+      <div class="course-grid">
+        <mat-card *ngFor="let course of recentCourses" class="course-card">
+          <mat-card-header>
+            <div mat-card-avatar class="course-avatar" [style.background-color]="course.color">
+              {{ course.name.charAt(0) }}
+            </div>
+            <mat-card-title>{{ course.name }}</mat-card-title>
+            <mat-card-subtitle>{{ course.code }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p class="course-description">{{ course.description }}</p>
+            <div class="course-stats">
+              <div class="stat">
+                <mat-icon>group</mat-icon>
+                <span>{{ course.studentCount }} Students</span>
+              </div>
+              <div class="stat">
+                <mat-icon>event</mat-icon>
+                <span>{{ course.examCount }} Exams</span>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-button color="primary" [routerLink]="['/teacher/courses', course.id]">
+              View Details
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </section>
+  </div>
+</div>

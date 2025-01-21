@@ -1,0 +1,70 @@
+/* Sidebar Styling with Theme Colors */
+:host {
+  width: 100%;
+}
+
+.mat-expansion-panel {
+  background-color: #D0DDD0;
+  box-shadow: none;
+}
+
+.mat-expansion-panel-header {
+  background-color: transparent;
+}
+
+.mat-expansion-panel-header:hover {
+  background-color: rgba(114, 125, 115, 0.1);
+}
+
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  align-items: center;
+}
+
+.mat-list {
+  background-color: #D0DDD0;
+  padding: 0;
+}
+
+.mat-list-item {
+  color: #333333;
+  transition: all 0.3s ease;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  transition: 0.2s all;
+  box-sizing: border-box;
+}
+
+.mat-list-item:hover {
+  background-color: rgba(114, 125, 115, 0.1);
+}
+
+.mat-list-item.active {
+  background-color: #727D73;
+  color: white;
+  border-left: 4px solid #727D73;
+}
+
+.mat-list-item.active .mat-icon {
+  color: white !important;
+}
+
+.mat-icon {
+  color: #727D73;
+  margin-right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.mat-list-item:hover .mat-icon {
+  transform: scale(1.1);
+}
+
+.list-item {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.mat-line {
+  white-space: normal !important;
+}

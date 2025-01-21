@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  production: false,\n  API_URL: 'http://localhost:8090',\n  apiUrl: 'http://localhost:8080/api' // Update this to match your backend API URL\n\n};","map":null,"metadata":{},"sourceType":"module"}

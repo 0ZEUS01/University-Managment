@@ -1,0 +1,44 @@
+/* Minimal component-specific styles */
+:host {
+  display: block;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.course-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.course-code {
+  font-weight: bold;
+  margin-right: 10px;
+  color: #2c3e50;
+  min-width: 70px;
+}
+
+.course-name {
+  flex-grow: 1;
+  margin-right: 10px;
+  color: #34495e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.course-instructor {
+  color: #7f8c8d;
+  font-size: 0.9em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+mat-form-field {
+  width: 100%;
+}

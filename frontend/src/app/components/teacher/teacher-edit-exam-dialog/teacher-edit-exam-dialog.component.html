@@ -1,0 +1,74 @@
+<div class="dialog-container">
+  <h2>Edit Exam</h2>
+  
+  <form [formGroup]="examForm" (ngSubmit)="onSave()">
+    <div class="form-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>Course Name</mat-label>
+        <input matInput formControlName="courseName" readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Exam Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter exam name">
+        <mat-error *ngIf="examForm.get('name')?.hasError('required')">
+          Exam name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of examTypes" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="examForm.get('type')?.hasError('required')">
+          Type is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="examForm.get('date')?.hasError('required')">
+          Date is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Duration</mat-label>
+        <input matInput type="number" formControlName="duration" min="1" placeholder="Enter duration">
+        <mat-error *ngIf="examForm.get('duration')?.hasError('required')">
+          Duration is required
+        </mat-error>
+        <mat-error *ngIf="examForm.get('duration')?.hasError('min')">
+          Duration must be greater than 0
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Duration Unit</mat-label>
+        <mat-select formControlName="durationUnit">
+          <mat-option *ngFor="let unit of durationUnits" [value]="unit">
+            {{unit}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="examForm.get('durationUnit')?.hasError('required')">
+          Duration unit is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="mat-dialog-actions">
+      <button mat-button type="button" class="cancel-button" (click)="onCancel()">
+        Cancel
+      </button>
+      <button mat-raised-button type="submit" class="save-button" [disabled]="!examForm.valid">
+        Save Changes
+      </button>
+    </div>
+  </form>
+</div>

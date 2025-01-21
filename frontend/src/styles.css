@@ -1,0 +1,308 @@
+/* Import statements must be at the very top */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* Add application styles & imports to this file! */
+
+
+/* Color Palette */
+:root {
+  --color-primary: #727D73;
+  --color-secondary: #AAB99A;
+  --color-background: #FBFBFB;
+  --color-background-secondary: #D0DDD0;
+  --color-text: #333333;
+  --color-white: #FFFFFF;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  height: 100%;
+  line-height: 1.6;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+td, th {
+  width: 25%;
+}
+
+/* Icon Styling */
+mat-icon {
+  color: var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+mat-icon:hover {
+  color: var(--color-secondary);
+  transform: scale(1.1);
+}
+
+/* Sidebar Styling */
+.mat-drawer {
+  background-color: var(--color-background-secondary) !important;
+  width: 250px;
+}
+
+.mat-drawer-container {
+  background-color: var(--color-background) !important;
+}
+
+.mat-list-item {
+  color: var(--color-text) !important;
+  transition: all 0.3s ease;
+}
+
+.mat-list-item:hover {
+  background-color: rgba(114, 125, 115, 0.1);
+  color: var(--color-primary) !important;
+}
+
+.mat-list-item-icon {
+  color: var(--color-primary) !important;
+  margin-right: 16px;
+}
+
+/* Structure */
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+img {
+  width: 40px;
+  height: 40px;
+}
+
+mat-form-field {
+  width: 90%;
+}
+
+.btn-sec {
+  margin-right: 5rem !important;
+  text-align: right;
+  margin-top: 1.5em;
+}
+
+.Update-btn {
+  margin: 5px;
+}
+
+.Discard-btn {
+  margin: 5px;
+}
+
+.text-inside {
+  position: absolute;
+  left: 5px;
+  width: 100%;
+}
+
+/* Subtle Modern Improvements */
+.mat-raised-button.mat-primary {
+  background-color: var(--color-primary) !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: var(--color-primary) !important;
+}
+
+.mat-paginator {
+  background-color: var(--color-background-secondary) !important;
+}
+
+/* Global Soft Shadows and Subtle Transitions */
+.card, .mat-card {
+  box-shadow: 0 4px 6px rgba(114, 125, 115, 0.1) !important;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover, .mat-card:hover {
+  box-shadow: 0 6px 8px rgba(114, 125, 115, 0.15) !important;
+}
+
+/* Advanced Modal Styling with Explicit Centering */
+.cdk-overlay-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.cdk-global-overlay-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.cdk-overlay-pane {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  pointer-events: auto;
+}
+
+.mat-dialog-container {
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  background-color: white !important;
+  border-radius: 16px !important;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.1),
+    0 5px 15px rgba(0, 0, 0, 0.08) !important;
+  padding: 30px;
+  overflow: auto;
+  animation: modal-appear 0.4s ease-out;
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.mat-dialog-title {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(114, 125, 115, 0.1);
+}
+
+.mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: 65vh;
+  overflow-y: auto;
+}
+
+.mat-dialog-content form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mat-dialog-actions button {
+  margin: 0 10px;
+  min-width: 120px;
+}
+
+/* Ensure form elements are centered and full width */
+.mat-dialog-content .mat-form-field {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .mat-dialog-container {
+    width: 95%;
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .mat-dialog-content .mat-form-field {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .btn-sec {
+    margin-right: 1rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .btn-sec {
+    margin-right: 1rem !important;
+  }
+}
+
+/* Add global styles to fix select dropdown width and positioning */
+.mat-select-panel {
+  max-width: 100% !important;
+  width: auto !important;
+  max-height: 300px !important;
+  overflow-y: auto;
+}
+
+.mat-select-panel-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Aggressive Select Dropdown Styling */
+.mat-select-panel {
+  position: fixed !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 350px !important;
+  max-width: 350px !important;
+  max-height: 300px !important;
+  margin: 0 !important;
+  overflow: auto !important;
+}
+
+.cdk-overlay-pane {
+  max-width: 400px !important;
+  width: 400px !important;
+}
+
+.cdk-overlay-container {
+  z-index: 9999 !important;
+}
+
+.mat-dialog-container {
+  max-width: 400px !important;
+  width: 400px !important;
+  overflow: hidden !important;
+}
+
+.mat-select-panel-wrap {
+  width: 350px !important;
+  max-width: 350px !important;
+}

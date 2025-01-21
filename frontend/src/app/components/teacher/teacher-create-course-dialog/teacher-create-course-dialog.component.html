@@ -1,0 +1,62 @@
+<h2 mat-dialog-title>{{ dialogTitle }}</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="courseForm">
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Course Code</mat-label>
+        <input matInput formControlName="code" placeholder="e.g. CSC301">
+        <mat-error *ngIf="code?.invalid">
+          <span *ngIf="code?.errors?.['required']">Course code is required</span>
+          <span *ngIf="code?.errors?.['pattern']">Code must be 3 letters followed by 3 digits</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Course Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter course name">
+        <mat-error *ngIf="name?.invalid">
+          <span *ngIf="name?.errors?.['required']">Course name is required</span>
+          <span *ngIf="name?.errors?.['minlength']">Course name must be at least 5 characters</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Specialty</mat-label>
+        <mat-select formControlName="specialty">
+          <mat-option *ngFor="let spec of specialties" [value]="spec">
+            {{ spec }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="specialty?.invalid">Specialty is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Semester</mat-label>
+        <mat-select formControlName="semester">
+          <mat-option *ngFor="let sem of semesters" [value]="sem.value">
+            {{ sem.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="semester?.invalid">Semester is required</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Number of Students</mat-label>
+      <input matInput type="number" formControlName="students">
+      <mat-error *ngIf="students?.invalid">
+        <span *ngIf="students?.errors?.['required']">Number of students is required</span>
+        <span *ngIf="students?.errors?.['min']">Minimum 10 students</span>
+        <span *ngIf="students?.errors?.['max']">Maximum 50 students</span>
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" 
+          [disabled]="courseForm.invalid">{{ submitButtonText }}</button>
+</mat-dialog-actions>

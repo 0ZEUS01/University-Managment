@@ -1,0 +1,290 @@
+.dashboard-content {
+  padding: 32px;
+  background-color: #f5f7fa;
+  min-height: calc(100vh - 64px);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.header-title h1 {
+  margin: 0;
+  color: #1a237e;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.header-title p {
+  margin: 8px 0 0;
+  color: #666;
+  font-size: 16px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.header-actions button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px;
+  height: 40px;
+}
+
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.stat-card mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  margin-right: 16px;
+}
+
+.stat-card.courses mat-icon {
+  color: #2196F3;
+}
+
+.stat-card.students mat-icon {
+  color: #4CAF50;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.content-sections {
+  display: grid;
+  gap: 32px;
+}
+
+.section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.section-header h2 {
+  color: #1a237e;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.course-card {
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.course-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.course-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.course-description {
+  color: #666;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.course-stats {
+  display: flex;
+  gap: 16px;
+}
+
+.course-stats .stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #666;
+  font-size: 14px;
+}
+
+.course-stats .stat mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+/* Exam styles */
+.exam-list {
+  display: grid;
+  gap: 16px;
+}
+
+.exam-card {
+  padding: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.exam-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.exam-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.exam-main h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.exam-main p {
+  margin: 4px 0 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.exam-details {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.exam-type {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.exam-type.final {
+  background-color: #E3F2FD;
+  color: #1976D2;
+}
+
+.exam-type.midterm {
+  background-color: #F3E5F5;
+  color: #7B1FA2;
+}
+
+.exam-type.quiz {
+  background-color: #E8F5E9;
+  color: #388E3C;
+}
+
+.exam-type.project {
+  background-color: #FFF3E0;
+  color: #F57C00;
+}
+
+.exam-date, .exam-duration {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #666;
+  font-size: 14px;
+}
+
+.exam-date mat-icon, .exam-duration mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-content {
+    padding: 16px;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .header-actions button {
+    flex: 1;
+  }
+
+  .stats-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exam-details {
+    flex-wrap: wrap;
+  }
+}

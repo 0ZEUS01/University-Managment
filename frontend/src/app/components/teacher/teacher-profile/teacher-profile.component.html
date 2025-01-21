@@ -1,0 +1,214 @@
+<div class="profile-content">
+  <div class="profile-container">
+    <div class="profile-header">
+      <h2>Teacher Profile</h2>
+      <button 
+        mat-raised-button 
+        color="primary" 
+        (click)="toggleEditMode()" 
+        *ngIf="!isEditing"
+      >
+        Edit Profile
+      </button>
+      <button 
+        mat-raised-button 
+        color="primary" 
+        (click)="cancelEdit()" 
+        *ngIf="isEditing"
+      >
+        Cancel Edit
+      </button>
+    </div>
+
+    <!-- View Mode -->
+    <div *ngIf="!isEditing" class="profile-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ profile.fullName }}</mat-card-title>
+          <mat-card-subtitle>{{ profile.academicRank }} | {{ profile.department }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="profile-details">
+            <div class="detail-row">
+              <span class="detail-label">Full Name:</span>
+              <span class="detail-value">{{ profile.fullName }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">University Email:</span>
+              <span class="detail-value">{{ profile.email }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Phone Number:</span>
+              <span class="detail-value">{{ profile.phoneNumber }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Date of Birth:</span>
+              <span class="detail-value">{{ profile.personalInfo.dateOfBirth | date:'mediumDate' }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Nationality:</span>
+              <span class="detail-value">{{ profile.personalInfo.nationality }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Department:</span>
+              <span class="detail-value">{{ profile.department }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Academic Rank:</span>
+              <span class="detail-value">{{ profile.academicRank }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Gender:</span>
+              <span class="detail-value">{{ profile.personalInfo.gender }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Marital Status:</span>
+              <span class="detail-value">{{ profile.personalInfo.maritalStatus }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Languages:</span>
+              <span class="detail-value">{{ profile.personalInfo.languages.join(', ') }}</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Edit Mode -->
+    <div *ngIf="isEditing" class="profile-edit">
+      <div class="profile-edit-container">
+        <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+          <div class="form-header">
+            <h2>Edit Profile</h2>
+          </div>
+
+          <div class="form-content">
+            <div class="form-row">
+              <mat-form-field appearance="outline">
+                <mat-label>Full Name</mat-label>
+                <input 
+                  matInput 
+                  placeholder="Enter your full name" 
+                  formControlName="fullName"
+                  required
+                >
+                <mat-error *ngIf="profileForm.get('fullName').invalid">
+                  Full name is required
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>University Email</mat-label>
+                <input 
+                  matInput 
+                  placeholder="Enter your university email" 
+                  type="email"
+                  formControlName="email"
+                  required
+                >
+                <mat-error *ngIf="profileForm.get('email').invalid">
+                  Invalid email
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input 
+                  matInput 
+                  placeholder="Enter your phone number"
+                  formControlName="phoneNumber"
+                >
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Date of Birth</mat-label>
+                <input 
+                  matInput 
+                  type="date" 
+                  placeholder="Choose your date of birth"
+                  formControlName="dateOfBirth"
+                >
+              </mat-form-field>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline">
+                <mat-label>Nationality</mat-label>
+                <input 
+                  matInput 
+                  placeholder="Enter your nationality"
+                  formControlName="nationality"
+                >
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Department</mat-label>
+                <input 
+                  matInput 
+                  placeholder="Enter your department"
+                  formControlName="department"
+                >
+              </mat-form-field>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline">
+                <mat-label>Academic Rank</mat-label>
+                <mat-select formControlName="academicRank">
+                  <mat-option value="Lecturer">Lecturer</mat-option>
+                  <mat-option value="Assistant Professor">Assistant Professor</mat-option>
+                  <mat-option value="Associate Professor">Associate Professor</mat-option>
+                  <mat-option value="Full Professor">Full Professor</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender">
+                  <mat-option value="Male">Male</mat-option>
+                  <mat-option value="Female">Female</mat-option>
+                  <mat-option value="Other">Other</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline">
+                <mat-label>Marital Status</mat-label>
+                <mat-select formControlName="maritalStatus">
+                  <mat-option value="Single">Single</mat-option>
+                  <mat-option value="Married">Married</mat-option>
+                  <mat-option value="Divorced">Divorced</mat-option>
+                  <mat-option value="Widowed">Widowed</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Languages</mat-label>
+                <input 
+                  matInput 
+                  placeholder="Enter languages (comma-separated)"
+                  formControlName="languages"
+                >
+              </mat-form-field>
+            </div>
+
+            <div class="form-actions">
+              <button 
+                mat-raised-button 
+                color="primary" 
+                type="submit" 
+                [disabled]="!profileForm.valid"
+              >
+                Save Profile
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<div class="student-layout">
+  <div class="sidebar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="App Logo">
+    </div>
+    <nav>
+      <ul>
+        <li [routerLinkActive]="'active'">
+          <a [routerLink]="['/student/dashboard']">
+            <i class="material-icons">dashboard</i> Dashboard
+          </a>
+        </li>
+        <li [routerLinkActive]="'active'">
+          <a [routerLink]="['/student/courses']">
+            <i class="material-icons">book</i> My Courses
+          </a>
+        </li>
+        <li [routerLinkActive]="'active'">
+          <a [routerLink]="['/student/grades']">
+            <i class="material-icons">grade</i> Grades
+          </a>
+        </li>
+        <li [routerLinkActive]="'active'">
+          <a [routerLink]="['/student/profile']">
+            <i class="material-icons">person</i> Profile
+          </a>
+        </li>
+        <li (click)="logout()">
+          <a><i class="material-icons">exit_to_app</i> Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <div class="courses-header">
+        <h1>My Courses</h1>
+        <button mat-raised-button color="primary" (click)="enrollNewCourse()">
+          <i class="material-icons">add</i> Enroll New Course
+        </button>
+      </div>
+    </header>
+
+    <div class="courses-content">
+      <mat-table [dataSource]="courses" class="mat-elevation-z8">
+        <!-- Code Column -->
+        <ng-container matColumnDef="code">
+          <mat-header-cell *matHeaderCellDef> Course Code </mat-header-cell>
+          <mat-cell *matCellDef="let course"> {{course.code}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Course Name </mat-header-cell>
+          <mat-cell *matCellDef="let course"> {{course.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Instructor Column -->
+        <ng-container matColumnDef="instructor">
+          <mat-header-cell *matHeaderCellDef> Instructor </mat-header-cell>
+          <mat-cell *matCellDef="let course"> {{course.instructor}} </mat-cell>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+          <mat-cell *matCellDef="let course">
+            <button mat-icon-button color="warn" (click)="removeCourse(course.code)">
+              <i class="material-icons">delete</i>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['code', 'name', 'instructor', 'actions']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['code', 'name', 'instructor', 'actions'];"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>
